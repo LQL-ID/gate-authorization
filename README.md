@@ -1,7 +1,7 @@
 # Gate Authorization
 
 ## Apa itu Gates ?
-Gates hanyalah penutupan yang menentukan apakah pengguna diizinkan untuk melakukan tindakan tertentu. Untuk memudahkan Gates adalah sebuah Facade Class yang disediakan Laravel untuk melakukan sebuah Otorisasi. [Laravel Gates](https://laravel.com/docs/10.x/authorization#gates)
+Gates hanyalah penutupan yang menentukan apakah pengguna diizinkan untuk melakukan tindakan tertentu. Sederhananya Gates adalah sebuah Facade Class yang disediakan Laravel untuk melakukan sebuah Otorisasi. [Laravel Gates](https://laravel.com/docs/10.x/authorization#gates)
 
 ## Bagaimana Cara Menggunakan Gates ?
 > Buatlah sebuah Provider Class, In case Saya me-namai AuthorizationServiceProvider.
