@@ -26,7 +26,8 @@ Route::group(['prefix' => 'auth', 'as' => 'login.', 'middleware' => ['guest']], 
 
 Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.', 'middleware' => ['auth']], function () {
     Route::get('/welcome', [DashboardController::class, 'displayWelcomingPage'])->name('welcome');
-    Route::get('/user-data', [DashboardController::class, 'displayUserDataPage'])->name('user-data');
-    Route::get('/user-roles', [DashboardController::class, 'displayUserGroupByRolesPage'])->name('user-roles');
-    Route::get('/count-user-roles', [DashboardController::class, 'displayCountUserRolesPage'])->name('count-user-roles');
+
+    Route::get('/user-data', [DashboardController::class, 'displayUserDataPage'])->middleware('can:admin')->name('user-data');
+    Route::get('/user-roles', [DashboardController::class, 'displayUserGroupByRolesPage'])->middleware('can:manager')->name('user-roles');
+    Route::get('/count-user-roles', [DashboardController::class, 'displayCountUserRolesPage'])->middleware('can:user')->name('count-user-roles');
 });

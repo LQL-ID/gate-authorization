@@ -12,16 +12,22 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('dashboard.welcome') }}">Welcome</a>
                 </li>
+                @endauth
+                @can('admin')
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{ route('dashboard.user-data') }}">User Data</a>
                 </li>
+                @endcan
+                @can('manager')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('dashboard.user-roles') }}">User Group By Roles</a>
                 </li>
+                @endcan
+                @can('user')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('dashboard.count-user-roles') }}">Count Current User and Roles</a>
                 </li>
-                @endauth
+                @endcan
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
