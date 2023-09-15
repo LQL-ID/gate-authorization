@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,9 @@ class DashboardController extends Controller
      */
     public function displayUserDataPage(): View
     {
-        return view('user-data');
+        $users = User::latest()->get();
+
+        return view('user-data', compact('users'));
     }
 
     /**

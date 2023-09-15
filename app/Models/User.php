@@ -38,4 +38,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * casts the created at to diff for humans.
+     *
+     * @return String
+     */
+    public function createdAtForHumans(): string
+    {
+        return \Carbon\Carbon::parse($this->created_at)->diffForHumans();
+    }
 }
