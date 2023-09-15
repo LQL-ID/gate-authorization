@@ -37,7 +37,14 @@ class DashboardController extends Controller
      */
     public function displayUserGroupByRolesPage(): View
     {
-        return view('user-role');
+        $users = User::select('id', 'name', 'roles')->get()->
+            groupBy('roles')->mapWithKeys(function ($users_data, $role) {
+                return [
+                    $role => $users_data->count(),
+                ];
+        });
+
+        return view('user-role', compact('users'));
     }
 
     /**
@@ -47,7 +54,12 @@ class DashboardController extends Controller
      */
     public function displayCountUserRolesPage(): View
     {
-        return view('count-user-roles');
+        $users = collect([
+            'total_users' => User::count(),
+            'total_user_roles' => User::select('id', 'roles')->get()->groupBy('roles')->count(),
+        ]);
+
+        return view('count-user-roles', compact('users'));
     }
 }
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'auth', 'as' => 'login.', 'middleware' => ['guest']], function () {
-    Route::get('/login', [LoginController::class, 'loginPageForm'])->name('form');
-    Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
+Route::group(['prefix' => 'auth', 'as' => 'login.'], function () {
+    Route::get('/login', [LoginController::class, 'loginPageForm'])->middleware(['guest'])->name('form');
+    Route::post('/authenticate', [LoginController::class, 'authenticate'])->middleware(['guest'])->name('authenticate');
+    Route::get('/logout', [LogoutController::class, 'logout'])->middleware(['auth'])->name('destroy');
 });
 
 Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.', 'middleware' => ['auth']], function () {

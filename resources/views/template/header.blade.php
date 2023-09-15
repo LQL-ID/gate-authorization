@@ -43,7 +43,7 @@
                         <li><a class="dropdown-item" href="{{ route('login.form') }}">Login</a></li>
                         @endguest
                         @auth
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                        <li><a class="dropdown-item" href="{{ route('login.destroy') }}">Logout</a></li>
                         @endauth
                     </ul>
                 </li>

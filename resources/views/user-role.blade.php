@@ -11,29 +11,22 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Roles</th>
+                            <th scope="col">Total User</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @forelse($users as $role => $total_user)
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            <th scope="row">#</th>
+                            <td>{{ $role }}</td>
+                            <td>{{ $total_user }}</td>
                         </tr>
+                        @empty
                         <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
+                            <td class="text-center" colspan="3"></td>
                         </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
 
