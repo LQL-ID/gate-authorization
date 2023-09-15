@@ -8,6 +8,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
+                @auth
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('dashboard.welcome') }}">Welcome</a>
                 </li>
@@ -20,14 +21,24 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('dashboard.count-user-roles') }}">Count Current User and Roles</a>
                 </li>
+                @endauth
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
+                        @guest
                         Credentials
+                        @endguest
+                        @auth
+                            {{ Auth::user()->email }}
+                        @endauth
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        @guest
                         <li><a class="dropdown-item" href="{{ route('login.form') }}">Login</a></li>
+                        @endguest
+                        @auth
                         <li><a class="dropdown-item" href="#">Logout</a></li>
+                        @endauth
                     </ul>
                 </li>
             </ul>
