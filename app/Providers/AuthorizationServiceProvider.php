@@ -8,6 +8,8 @@ class AuthorizationServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
+     *
+     * @return void
      */
     public function register(): void
     {
@@ -16,6 +18,8 @@ class AuthorizationServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap services.
+     *
+     * @return void
      */
     public function boot(): void
     {
