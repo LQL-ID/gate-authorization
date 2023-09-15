@@ -58,6 +58,12 @@ class AuthorizationServiceProvider extends ServiceProvider
     }
 ```
 
+> Sebagai Contoh Menggunakan Class Model Users dan Wajib Menggunakan Facade Class Gate
+```php
+use App\Models\User;
+use Illuminate\Support\Facades\Gate;
+```
+
 > Setelah membuat definisi Gates/Gerbang untuk setiap Roles/Peran, Kita Dapat Menggunakan Alias daripada Middleware bawaan Laravel yaitu Autorize::class, Sebagai Contoh Saya Menggunakannya di routes/web.php
 ```php
 Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.', 'middleware' => ['auth']], function () {
