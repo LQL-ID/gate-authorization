@@ -10,22 +10,22 @@
             <ul class="navbar-nav ms-auto">
                 @auth
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('dashboard.welcome') }}">Welcome</a>
+                    <a class="nav-link {{ request()->routeIs('dashboard.welcome') ? 'active' : '' }}" aria-current="page" href="{{ route('dashboard.welcome') }}">Welcome</a>
                 </li>
                 @endauth
                 @can('admin')
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{{ route('dashboard.user-data') }}">User Data</a>
+                    <a class="nav-link {{ request()->routeIs('dashboard.user-data') ? 'active' : '' }}" aria-current="page" href="{{ route('dashboard.user-data') }}">User Data</a>
                 </li>
                 @endcan
                 @can('manager')
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('dashboard.user-roles') }}">User Group By Roles</a>
+                    <a class="nav-link {{ request()->routeIs('dashboard.user-roles') ? 'active' : '' }}" href="{{ route('dashboard.user-roles') }}">User Group By Roles</a>
                 </li>
                 @endcan
                 @can('user')
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('dashboard.count-user-roles') }}">Count Current User and Roles</a>
+                    <a class="nav-link {{ request()->routeIs('dashboard.count-user-roles') ? 'active' : '' }}" href="{{ route('dashboard.count-user-roles') }}">Count Current User and Roles</a>
                 </li>
                 @endcan
                 <li class="nav-item dropdown">
